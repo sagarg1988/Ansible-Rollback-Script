@@ -17,6 +17,10 @@
       set_fact:
         is_mysql_installed: "{{ 'Active' in mysql_stat }}"
 
+    - name: Is Mysql Service Active
+      debug:
+        msg: "Mysql Service Status: {{ is_mysql_installed }}"
+
     - name: Install MySQL
       action: apt name={{ item }}
       with_items:
