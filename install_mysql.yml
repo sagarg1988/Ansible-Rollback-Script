@@ -9,7 +9,7 @@
     - name: Mysql service status
       shell: service mysql status
       register: mysql_service_output
-    - debug: msg="{{ mysql_service_output.stdout }}"
+      debug: msg="{{ mysql_service_output.stdout }}"
       set_fact:
         exists: "{{ yes }}"
       when: " 'active (running)' in mysql_service_output.stdout "
