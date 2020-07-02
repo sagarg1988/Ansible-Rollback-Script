@@ -11,7 +11,7 @@
 
     - name: Mysql Status
       debug:
-      msg: "Mysql Status: {{ mysql_stat.stdout }}"
+        msg: "Mysql Status: {{ mysql_stat.stdout }}"
 
     - name: Install MySQL
       action: apt name={{ item }}
