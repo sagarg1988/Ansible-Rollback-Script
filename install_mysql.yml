@@ -6,13 +6,13 @@
 
   tasks:
 
-    - name: Mysql service status
-      stat: path=/etc/init.d/httpd
-      register: result
-#      debug: msg="{{ result.stdout }}"
-#      set_fact:
-#        exists: "{{ 'Yes' }}"
-#      when: " 'active (running)' in mysql_service_output.stdout "
+    - name: Service Mysql status
+      shell: systemctl status mysql
+      register: mysql_stat
+
+    - name: Mysql Status
+      debug:
+      msg: "Mysql Status: {{ mysql_stat.stdout }}"
 
     - name: Install MySQL
       action: apt name={{ item }}
