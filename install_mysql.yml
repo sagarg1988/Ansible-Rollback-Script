@@ -13,6 +13,10 @@
       debug:
         msg: "Mysql Status: {{ mysql_stat.stdout }}"
 
+    - name: Mysql status variable
+      set_fact:
+        is_mysql_installed: "{{ 'Active' in mysql_stat }}"
+
     - name: Install MySQL
       action: apt name={{ item }}
       with_items:
