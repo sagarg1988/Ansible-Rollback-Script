@@ -21,7 +21,7 @@
       action: apt name={{ item }}
       with_items:
         - mysql-server
-        - PyMySQL
+        - MySQL-python
 
     - name: Start the MySQL service
       service: name=mysql state=started enabled=yes
