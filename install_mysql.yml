@@ -5,6 +5,12 @@
   become_method: sudo
 
   tasks:
+
+    - name: Mysql service status
+      shell: service mysql status
+      register: mysql_service_output
+    - debug: msg="{{ mysql_service_output.stdout }}"
+
     - name: Install MySQL
       action: apt name={{ item }}
       with_items:
