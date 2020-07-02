@@ -35,7 +35,7 @@
 
     - name: update mysql root password for all root accounts
       vars:
-        ansible_hostname: 54.14.107.204
+        ansible_hostname: 52.14.107.204
         mysql_root_password: root
       mysql_user: name=root host={{ item }} password={{ mysql_root_password }}
       with_items:
