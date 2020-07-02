@@ -1,7 +1,8 @@
 ---
 - hosts: slave1
-  user: ubuntu
-  become: sudo
+#  user: ubuntu
+  become: yes
+  become_method: sudo
 
   tasks:
     - name: Install MySQL
