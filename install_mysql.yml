@@ -53,5 +53,7 @@
 #    - name: delete anonymous MySQL server user for localhost
 #      action: mysql_user user="" state="absent"
 #
-#    - name: remove the MySQL test database
-#      action: mysql_db db=test state=absent
+    - name: Start MySQL database
+      action: mysql_db db=sagar state=present
+
+
