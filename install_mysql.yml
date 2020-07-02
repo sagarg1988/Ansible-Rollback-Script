@@ -15,7 +15,7 @@
 
     - name: Mysql status variable
       set_fact:
-        is_mysql_installed: "{{ 'Active' in mysql_stat }}"
+        is_mysql_installed: "{{ 'active' in mysql_stat.stdout }}"
 
     - name: Is Mysql Service Active
       debug:
