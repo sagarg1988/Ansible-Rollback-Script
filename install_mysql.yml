@@ -10,6 +10,13 @@
       shell: service mysql status
       register: mysql_service_output
     - debug: msg="{{ mysql_service_output.stdout }}"
+      set_fact:
+        exists: "{{ yes }}"
+      when: " 'active (running)' in mysql_service_output.stdout "
+
+    - name: Display Variable
+      debug: msg="{{ exists }}"
+      ignore_errors: yes
 
     - name: Install MySQL
       action: apt name={{ item }}
