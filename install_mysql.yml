@@ -11,7 +11,7 @@
         - mysql-server
 
     - name: Start the MySQL service
-      action: service name=mysqld state=started
+      service: name=mysql state=started enabled=yes
 #
 #    # 'localhost' needs to be the last item for idempotency, see
 #    # http://ansible.cc/docs/modules.html#mysql-user
