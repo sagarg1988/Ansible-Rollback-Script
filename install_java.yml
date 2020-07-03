@@ -1,30 +1,36 @@
 ---
-- name: Install add-apt-repostory
+- hosts: slave1
+#  user: ubuntu
   become: yes
-  apt: name=software-properties-common state=latest
+  become_method: sudo
 
-- name: Add Oracle Java Repository
-  become: yes
-  apt_repository: repo='ppa:webupd8team/java'
+  tasks:
+    - name: Install add-apt-repostory
+      become: yes
+      apt: name=software-properties-common state=latest
 
-- name: Accept Java 8 License
-  become: yes
-  debconf: name='oracle-java8-installer' question='shared/accepted-oracle-license-v1-1' value='true' vtype='select'
+    - name: Add Oracle Java Repository
+      become: yes
+      apt_repository: repo='ppa:webupd8team/java'
 
-- name: Install Oracle Java 8
-  become: yes
-  apt: name={{item}} state=latest
-  with_items:
-    - oracle-java8-installer
-    - ca-certificates
-    - oracle-java8-set-default
+    - name: Accept Java 8 License
+      become: yes
+      debconf: name='oracle-java8-installer' question='shared/accepted-oracle-license-v1-1' value='true' vtype='select'
 
-- name: Java Service Check
-  shell: java -version
-  register: check_java
-  ignore_errors: True
-  changed_when: False
+    - name: Install Oracle Java 8
+      become: yes
+      apt: name={{item}} state=latest
+      with_items:
+        - oracle-java8-installer
+        - ca-certificates
+        - oracle-java8-set-default
 
-- name: Print java_install
-  debug:
-    msg: "Java: {{ check_java }}"
+    - name: Java Service Check
+      shell: java -version
+      register: check_java
+      ignore_errors: True
+      changed_when: False
+
+    - name: Print java_install
+      debug:
+        msg: "Java: {{ check_java }}"
