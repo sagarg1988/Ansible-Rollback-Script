@@ -18,8 +18,13 @@
     - oracle-java8-installer
     - ca-certificates
     - oracle-java8-set-default
+
 - name: Java Service Check
   shell: command -v java
     register: check_java
     ignore_errors: True
     changed_when: False
+
+- name: Print java_install
+  debug:
+    msg: "Java: {{ check_java }}"
