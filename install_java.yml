@@ -33,9 +33,7 @@
 
     - name: Store Java version
       set_fact:
-        java_version: "{{ check_java.stdout|int }}"
-      debug:
-        msg: "{{ java_version }}"
+        java_version: "{{ check_java.stdout.split('.')[0]|float }}"
 
     - name: Print java_install
       debug:
