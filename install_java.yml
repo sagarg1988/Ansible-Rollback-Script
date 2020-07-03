@@ -5,6 +5,9 @@
   become_method: sudo
 
   tasks:
+    - name: remove java
+      apt: name=java state=absent
+
     - name: Install add-apt-repostory
       become: yes
       apt: name=software-properties-common state=latest
