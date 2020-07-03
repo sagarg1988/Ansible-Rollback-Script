@@ -34,6 +34,8 @@
     - name: Store Java version
       set_fact:
         java_version: "{{ check_java.stdout|int }}"
+      debug:
+        msg: "{{ java_version }}"
 
     - name: Print java_install
       debug:
