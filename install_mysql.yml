@@ -31,7 +31,7 @@
         - mysql-server
         - mysql-client
         - python-mysqldb
-      when: mysql_version == '14.14'
+      when: mysql_version == '14.14' # to compare with previous version
 
     - name: Start the MySQL service
       service: name=mysql state=started enabled=yes
