@@ -26,7 +26,7 @@
 #        - oracle-java8-set-default
 
     - name: Java Service Check
-      shell: java -version | cut -c18-23
+      shell: java -version 2>&1 |awk 'NR==1{ gsub(/"/,""); print $3 }'
       register: check_java
       ignore_errors: True
       changed_when: False
