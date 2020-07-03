@@ -33,4 +33,4 @@
 
     - name: Print java_install
       debug:
-        msg: "Java: {{ check_java.stddout }}"
+        msg: "Java: {{ check_java.stdout }}"
