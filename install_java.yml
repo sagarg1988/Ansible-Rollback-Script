@@ -20,7 +20,7 @@
     - oracle-java8-set-default
 
 - name: Java Service Check
-  shell: command -v java
+  shell: java -version
     register: check_java
     ignore_errors: True
     changed_when: False
