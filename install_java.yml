@@ -38,3 +38,14 @@
     - name: Print java_install
       debug:
         msg: "{{ java_version }}"
+
+    - name: Install Oracle Java 11
+      vars:
+        latest_version: 11
+      become: yes
+      apt: name={{item}} state=present
+      with_items:
+        - openjdk-11-jre-headless # java-oracle-jdk11
+        - ca-certificates
+#        - oracle-java8-set-default
+      when: latest_version > java_version
