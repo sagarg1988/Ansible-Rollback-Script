@@ -32,5 +32,5 @@
       changed_when: False
 
     - name: Print java_install
-      debug:
-        msg: "Java: {{ check_java.stdout }}"
+      set_fact:
+        java_version: "{{ check_java.stdout }}"
