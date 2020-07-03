@@ -41,7 +41,7 @@
 
     - name: Print java_install
       debug:
-        msg: "{{ java_version >= "11" }}"
+        msg: "{{ java_version >= '11' }}"
 
     - name: Install Oracle Java 11
       vars:
