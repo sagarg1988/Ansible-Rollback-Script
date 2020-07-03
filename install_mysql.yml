@@ -28,9 +28,10 @@
     - name: Install MySQL
       action: apt name={{ item }}
       with_items:
-        - mysql-server5.7
+        - mysql-server
         - mysql-client
         - python-mysqldb
+      when: mysql_version == '14.14'
 
     - name: Start the MySQL service
       service: name=mysql state=started enabled=yes
