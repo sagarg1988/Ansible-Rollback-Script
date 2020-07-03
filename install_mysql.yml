@@ -45,7 +45,7 @@
         - localhost
 
     - name: Get MySQL version with non-default credentials
-      shell: mysql --version
+      shell: mysql --version | cut -c12-16
       register: mysql_version
 
     - name: Display Mysql Version
