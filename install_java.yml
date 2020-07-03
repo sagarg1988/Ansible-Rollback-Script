@@ -5,25 +5,25 @@
   become_method: sudo
 
   tasks:
-    - name: Install add-apt-repostory
-      become: yes
-      apt: name=software-properties-common state=latest
-
-    - name: Add Oracle Java Repository
-      become: yes
-      apt_repository: repo='ppa:webupd8team/java'
-
-    - name: Accept Java 8 License
-      become: yes
-      debconf: name='oracle-java8-installer' question='shared/accepted-oracle-license-v1-1' value='true' vtype='select'
-
-    - name: Install Oracle Java 8
-      become: yes
-      apt: name={{item}} state=present
-      with_items:
-        - openjdk-8-jre-headless
-        - ca-certificates
-#        - oracle-java8-set-default
+#    - name: Install add-apt-repostory
+#      become: yes
+#      apt: name=software-properties-common state=latest
+#
+#    - name: Add Oracle Java Repository
+#      become: yes
+#      apt_repository: repo='ppa:webupd8team/java'
+#
+#    - name: Accept Java 8 License
+#      become: yes
+#      debconf: name='oracle-java8-installer' question='shared/accepted-oracle-license-v1-1' value='true' vtype='select'
+#
+#    - name: Install Oracle Java 8
+#      become: yes
+#      apt: name={{item}} state=present
+#      with_items:
+#        - openjdk-8-jre-headless
+#        - ca-certificates
+##        - oracle-java8-set-default
 
     - name: Java Service Check
       shell: java -version 2>&1 |awk 'NR==1{ gsub(/"/,""); print $3 }'
@@ -39,6 +39,10 @@
       debug:
         msg: "{{ java_version }}"
 
+    - name: Print java_install
+      debug:
+        msg: "{{ java_version >= "11" }}"
+
     - name: Install Oracle Java 11
       vars:
         latest_version: 11
@@ -48,4 +52,4 @@
         - openjdk-11-jre-headless # java-oracle-jdk11
         - ca-certificates
 #        - oracle-java8-set-default
-      when: latest_version > java_version
+      when: latest_version >= java_version
