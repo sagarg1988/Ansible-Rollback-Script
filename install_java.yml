@@ -31,6 +31,10 @@
       ignore_errors: True
       changed_when: False
 
-    - name: Print java_install
+    - name: Store Java version
       set_fact:
         java_version: "{{ check_java.stdout }}"
+
+    - name: Print java_install
+      debug:
+        msg: "{{ java_version}}"
