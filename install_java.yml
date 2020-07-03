@@ -23,7 +23,7 @@
       with_items:
         - openjdk-8-jre-headless
         - ca-certificates
-        - oracle-java8-set-default
+#        - oracle-java8-set-default
 
     - name: Java Service Check
       shell: java -version
