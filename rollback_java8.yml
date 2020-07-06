@@ -62,9 +62,9 @@
       debug:
         msg: "{{ java_version }}"
 
-    - name: Print java_install
-      debug:
-        msg: "{{ '11' >= java_version  }}"
+#    - name: Print java_install
+#      debug:
+#        msg: "{{ '11' >= java_version  }}"
 
 
 
