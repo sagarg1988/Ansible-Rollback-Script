@@ -14,7 +14,12 @@
           - openjdk-111-jre-headless
           - ca-certificates
         state: present
-      register: java_failed
+      register: java_status
+      failed_when: "'FAILED' in command_result.stderr"
+
+
+    - name: java verion status
+      debug: {{ java_status }}
 
 #      when: latest_version >= java_version
 
