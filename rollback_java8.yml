@@ -48,23 +48,23 @@
         - ca-certificates
       when: "installation_status == 'FAIL'"
 #
-#    - name: Java Installed version Check
-#      shell: java -version 2>&1 |awk 'NR==1{ gsub(/"/,""); print $3 }'
-#      register: check_java
-#      ignore_errors: True
-#      changed_when: False
-#
-#    - name: Store Java version
-#      set_fact:
-#        java_version: "{{ '.'.join((check_java.stdout.split('.')[0], check_java.stdout.split('.')[1]))|float }}"
-#
-#    - name: Print java_install
-#      debug:
-#        msg: "{{ java_version }}"
+    - name: Java Installed version Check
+      shell: java -version 2>&1 |awk 'NR==1{ gsub(/"/,""); print $3 }'
+      register: check_java
+      ignore_errors: True
+      changed_when: False
 
-#    - name: Print java_install
-#      debug:
-#        msg: "{{ '11' >= java_version  }}"
+    - name: Store Java version
+      set_fact:
+        java_version: "{{ '.'.join((check_java.stdout.split('.')[0], check_java.stdout.split('.')[1]))|float }}"
+
+    - name: Print java_install
+      debug:
+        msg: "{{ java_version }}"
+
+    - name: Print java_install
+      debug:
+        msg: "{{ '11' >= java_version  }}"
 
 
 
