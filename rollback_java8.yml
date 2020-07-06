@@ -15,7 +15,7 @@
           - ca-certificates
         state: present
 
-      when: latest_version >= java_version
+#      when: latest_version >= java_version
 
 #    - name: Install add-apt-repostory
 #      become: yes
