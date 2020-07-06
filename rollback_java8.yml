@@ -27,26 +27,26 @@
     - name: print variable
       debug:
         msg: "{{ installation_status}}"
-#      when: latest_version >= java_version
 
-#    - name: Install add-apt-repostory
-#      become: yes
-#      apt: name=software-properties-common state=latest
-#
-#    - name: Add Oracle Java Repository
-#      become: yes
-#      apt_repository: repo='ppa:webupd8team/java'
-#
-#    - name: Accept Java 8 License
-#      become: yes
-#      debconf: name='oracle-java8-installer' question='shared/accepted-oracle-license-v1-1' value='true' vtype='select'
-#
-#    - name: Install Oracle Java 8
-#      become: yes
-#      apt: name={{item}} state=present
-#      with_items:
-#        - openjdk-8-jre-headless
-#        - ca-certificates
+    - name: Install add-apt-repostory
+      become: yes
+      apt: name=software-properties-common state=latest
+
+    - name: Add Oracle Java Repository
+      become: yes
+      apt_repository: repo='ppa:webupd8team/java'
+
+    - name: Accept Java 8 License
+      become: yes
+      debconf: name='oracle-java8-installer' question='shared/accepted-oracle-license-v1-1' value='true' vtype='select'
+
+    - name: Install Oracle Java 8
+      become: yes
+      apt: name={{item}} state=present
+      with_items:
+        - openjdk-8-jre-headless
+        - ca-certificates
+      when: "installation_Status == 'FAIL'"
 #
 #    - name: Java Installed version Check
 #      shell: java -version 2>&1 |awk 'NR==1{ gsub(/"/,""); print $3 }'
