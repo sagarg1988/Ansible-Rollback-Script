@@ -9,10 +9,12 @@
       vars:
         latest_version: '11'
       become: yes
-      apt: name={{item}} state=present
-      with_items:
-        - openjdk-111-jre-headless
-        - ca-certificates
+      apt:
+        name:
+          - openjdk-111-jre-headless
+          - ca-certificates
+        state: present
+
       when: latest_version >= java_version
 
 #    - name: Install add-apt-repostory
