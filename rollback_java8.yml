@@ -24,6 +24,9 @@
         installation_status: 'FAIL'
         when: "'FAILED' in java_status"
 
+    - name: print variable
+      debug:
+        msg: "{{ installation_status}}"
 #      when: latest_version >= java_version
 
 #    - name: Install add-apt-repostory
