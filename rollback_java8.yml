@@ -28,6 +28,12 @@
       debug:
         msg: "{{ installation_status}}"
 
+    - name: Remove java
+      apt:
+        apt: java
+        state: absent
+      sudo: yes
+
     - name: Install add-apt-repostory
       become: yes
       apt: name=software-properties-common state=latest
