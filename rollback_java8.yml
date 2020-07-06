@@ -19,7 +19,8 @@
 
 
     - name: java verion status
-      debug: {{ java_status }}
+      debug:
+        msg: "{{ java_status }}"
 
 #      when: latest_version >= java_version
 
