@@ -15,7 +15,7 @@
           - ca-certificates
         state: present
       register: java_status
-      failed_when: "'FAILED' in command_result.stderr"
+      failed_when: "'FAILED' in java_status.stderr"
 
 
     - name: java verion status
