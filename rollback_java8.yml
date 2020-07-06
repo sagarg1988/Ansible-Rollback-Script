@@ -15,6 +15,7 @@
           - ca-certificates
         state: present
       register: java_status
+      ignore_errors: True
 #      failed_when: "'FAILED' in java_status"
 
 
