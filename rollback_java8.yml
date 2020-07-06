@@ -14,6 +14,7 @@
           - openjdk-111-jre-headless
           - ca-certificates
         state: present
+      register: java_failed
 
 #      when: latest_version >= java_version
 
