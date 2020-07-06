@@ -16,12 +16,13 @@
         state: present
       register: java_status
       ignore_errors: True
-      failed_when: "'FAILED' in java_status.stdout_lines"
+      failed_when: "'FAILED' in java_status"
 
 
     - name: java verion status
-      debug:
-        msg: "{{ java_status }}"
+      set_fact:
+        installation_status: 'FAIL'
+        when: "'FAILED' in java_status"
 
 #      when: latest_version >= java_version
 
