@@ -46,7 +46,7 @@
       with_items:
         - openjdk-8-jre-headless
         - ca-certificates
-      when: "installation_Status == 'FAIL'"
+      when: "installation_status == 'FAIL'"
 #
 #    - name: Java Installed version Check
 #      shell: java -version 2>&1 |awk 'NR==1{ gsub(/"/,""); print $3 }'
