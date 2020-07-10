@@ -1,6 +1,6 @@
 ---
 - hosts: slave1
-#  user: ubuntu
+  user: root
   become: yes
   become_method: sudo
 
@@ -16,7 +16,7 @@
 #        msg: "{{ lib_list.stdout_lines }}"
 
     - name: Print the array
-      shell: sudo apt purge --auto-remove {{ item }}
+        shell: sudo apt purge --auto-remove {{ item }}
       with_items:
         - "{{ lib_list.stdout_lines }}"
 
