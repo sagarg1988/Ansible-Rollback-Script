@@ -13,4 +13,4 @@
 
     - name: Print the list
       debug:
-        msg: "{{ lib_list }}"
+        msg: "{{ lib_list.stdout_lines }}"
