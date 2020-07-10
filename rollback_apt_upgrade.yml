@@ -11,6 +11,13 @@
       ignore_errors: True
       changed_when: False
 
-    - name: Print the list
-      debug:
-        msg: "{{ lib_list.stdout_lines }}"
+#    - name: Print the list
+#      debug:
+#        msg: "{{ lib_list.stdout_lines }}"
+
+    - name: Print the array
+      shell: cat {{ item }}
+      register: annoying_words
+      with_items:
+        - "{{ lib_list.stdout_lines }}"
+
