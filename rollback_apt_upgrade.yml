@@ -20,5 +20,5 @@
         name: "{{ item }}"
         state: absent
       with_items:
-        - "{{ lib_list }}"
+        - "{{ lib_list.stdout_lines }}"
 
