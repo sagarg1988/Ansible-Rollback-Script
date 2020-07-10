@@ -16,8 +16,8 @@
 #        msg: "{{ lib_list.stdout_lines }}"
 
     - name: Print the array
-      shell: cat {{ item }}
-      register: annoying_words
+      debug:
+        msg: "{{ item }}"
       with_items:
-        - "{{ lib_list.stdout_lines }}"
+        - "{{ lib_list }}"
 
