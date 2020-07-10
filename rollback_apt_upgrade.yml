@@ -16,8 +16,9 @@
 #        msg: "{{ lib_list.stdout_lines }}"
 
     - name: Print the array
-      debug:
-        msg: "{{ item }}"
+      apt:
+        name: "{{ item }}"
+        state: absent
       with_items:
         - "{{ lib_list }}"
 
