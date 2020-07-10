@@ -16,9 +16,10 @@
 #        msg: "{{ lib_list.stdout_lines }}"
 
     - name: Print the array
-      apt:
-        name: "{{ item }}"
-        state: absent
+      shell: sudo apt-get purge --auto-remove {{ item }}
       with_items:
         - "{{ lib_list.stdout_lines }}"
+
+#    - name: Run the packages
+#      shell: sudo apt-get dist-upgrade
 
