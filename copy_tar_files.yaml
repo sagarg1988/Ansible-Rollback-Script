@@ -10,5 +10,10 @@
     - name: Execute the shell Script
       shell: bash collect-data.sh
 
+    - name: Install boto3 and botocore with pip3 module
+        pip:
+          name:
+          - boto3
+
     - name: Upload the files to centralised location
       shell: python upload.py
