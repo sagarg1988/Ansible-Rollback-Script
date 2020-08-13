@@ -4,8 +4,8 @@
   become_method: sudo
 
   tasks:
-      - name: Copy bash script
-        shell: sudo cp /home/ubuntu/Ansible-Rollback-Script/collect-data.sh /home/ubuntu/
+    - name: Copy bash script
+      shell: sudo cp /home/ubuntu/Ansible-Rollback-Script/collect-data.sh /home/ubuntu/
 
     - name: Execute the shell Script
       shell: bash collect-data.sh
