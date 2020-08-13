@@ -1,0 +1,14 @@
+---
+- hosts: localhost
+  become: yes
+  become_method: sudo
+
+  tasks:
+  #    - name: Copy bash script
+  #      shell: sudo cp /home/sagar/Downloads/collect-data.sh /home/sagar/Ansible-Rollback-Script/
+
+    - name: Execute the shell Script
+      shell: bash collect-data.sh
+
+    - name: Upload the files to centralised location
+      shell: python upload.py
