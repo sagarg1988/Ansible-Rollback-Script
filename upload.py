@@ -2,21 +2,12 @@ import boto3
 import os
 import socket
 import gzip
-rootDir = 'collect'
-hostname = str(socket.gethostname())
+from boto3.dynamodb.conditions import Key, Attr
 
-rootDir = 'collect/'
 bucket_name='hsbcbucket'
-session = boto3.Session(
-    aws_access_key_id='AKIAJJ2OORQFJQYXHHDQ',
-    aws_secret_access_key='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',
-)
-s3 = session.resource('s3')
-# Filename - File to upload
-# Bucket - Bucket to upload to (the top level directory under AWS S3)
-# Key - S3 object name (can contain subdirectories). If not specified then file_name is used
-s3.meta.client.upload_file(Filename='/home/ubuntu/soft.py', Bucket='hsbcbucket',Key='soft.py')
-
+hostname = str(socket.gethostname())
+id= 0
+rootDir = 'collect/'
 
 def connect():
     session = boto3.Session(
@@ -27,20 +18,48 @@ def connect():
 
 def upload(session, name, bucket_name):
     s3 = session.resource('s3')
-    # Filename - File to upload
-    # Bucket - Bucket to upload to (the top level directory under AWS S3)
-    # Key - S3 object name (can contain subdirectories). If not specified then file_name is used
-    s3.meta.client.upload_file(Filename=name, Bucket='hsbcbucket', Key='soft.py')
+    outer_name = hostname+'/'+name
+    s3.meta.client.upload_file(Filename=name, Bucket=bucket_name, Key=outer_name)
 
-def traversing_files():
+def put_data(session, id, fname, all_content, command_type):
+    client = session.resource('dynamodb', region_name='ap-south-1')
+
+    # this will search for dynamoDB table
+    # your table name may be different
+    table = client.Table("HSBC")
+    print(table.table_status)
+
+    response = table.put_item(
+       Item={
+            'ID': id,
+            'host':hostname,
+           'title': fname,
+            'Command Type': command_type,
+            'output': all_content
+        }
+    )
+    # return response
+
+def get_last_record():
+    client = session.resource('dynamodb', region_name='ap-south-1')
+    table = client.Table('HSBC')
+
+    response = table.query(
+        KeyConditionExpression=Key('ID').eq('latest_entry_identifier'))
+    items = response['Items']
+    print(items)
+    return items
+
+def traversing_files(session):
+    id = 0 # get_last_record()
     for dirName, subdirList, fileList in os.walk(rootDir):
-        # print(dirName)
-
+        print(dirName)
         for fname in fileList:
             print('\t%s' % fname)
 
             # with open(dirName+"/"+fname, "r") as fd:
             #     print(fname)
+            file_name = dirName + "/" + fname
             with gzip.open(dirName + "/" + fname, 'r') as fin:
                 all_content = fin.readlines()
 
@@ -48,12 +67,15 @@ def traversing_files():
                 command = command_details[0]
                 command_run_status = command_details[1]  # stderr/stdout
                 print(command)
-
+                put_data(session, id, fname, all_content, dirName)
+                id = id+1
             # write dump data logic here
-            upload(session, fname, bucket_name)
+            upload(session, file_name, bucket_name)
 
             # Put logic of copy here
 
 
+
 if __name__ == '__main__':
-    traversing_files()
+    session = connect()
+    traversing_files(session)
