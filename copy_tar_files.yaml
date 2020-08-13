@@ -5,8 +5,8 @@
   tasks:
 
     - name: Copy from master to slave
-     synchronize: src=/home/ubuntu/Ansible-Rollback-Script/collect-data.sh dest=/home/ubuntu/ mode=push
-     delegate_to: master
+      synchronize: src=/home/ubuntu/Ansible-Rollback-Script/collect-data.sh dest=/home/ubuntu/ mode=push
+      delegate_to: master
 
 #    - name: Copy bash script
 #      shell: sudo cp /home/ubuntu/Ansible-Rollback-Script/collect-data.sh /home/ubuntu/
