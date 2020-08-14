@@ -26,6 +26,7 @@
       dest: /home/{{ ansible_ssh_user }}/{{ app_name }}
       update: yes  # Does a git pull if the repo already exists
       clone: yes
+
 #  - name: install virtualenv
 #    pip:
 #      name: virtualenv
