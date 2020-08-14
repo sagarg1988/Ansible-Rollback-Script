@@ -22,8 +22,8 @@
   - name: clone repo
     debugger: on_failed
     git:
-      repo: 'https://github.com/sagarg1988/Ansible-Rollback-Script.git'
-#      repo: 'https://github.com/{{ github_user }}/{{ app_name }}.git'
+#      repo: 'https://github.com/sagarg1988/Ansible-Rollback-Script.git'
+      repo: 'https://github.com/{{ github_user }}/{{ app_name }}.git'
       dest: /home/{{ ansible_ssh_user }}/{{ app_name }}
       update: yes  # Does a git pull if the repo already exists
       clone: yes
