@@ -42,4 +42,4 @@
 #    shell: bash /home/{{ ansible_ssh_user }}/{{ app_name }}/collect-data.sh
 
   - name: Execute the Script
-    shell: python upload.py
+    shell: python /home/{{ ansible_ssh_user }}/{{ app_name }}/upload.py
