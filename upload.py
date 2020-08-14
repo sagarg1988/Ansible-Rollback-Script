@@ -64,7 +64,8 @@ def traversing_files(session):
             # with open(dirName+"/"+fname, "r") as fd:
             #     print(fname)
             file_name = dirName + "/" + fname
-            with gzip.open(dirName + "/" + fname, 'r') as fin:
+            # with gzip.open(dirName + "/" + fname, 'r') as fin:
+            with open(dirName + "/" + fname, 'r') as fin:
                 all_content = fin.readlines()
 
                 command_details = fname.split(hostname)[1].replace('-', '').split(".")
