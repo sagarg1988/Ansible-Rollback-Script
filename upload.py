@@ -10,7 +10,7 @@ id= 0
 rootDir = 'collect/'
 
 def connect():
-    with open('../cred.txt') as reader:
+    with open('/home/ubuntu/cred.txt', 'r') as reader:
         key = reader.readline().split('key=')[1].replace('\n', '')
         secret = reader.readline().split('secret=')[1].replace('\n', '')
         # print(key, secret)
