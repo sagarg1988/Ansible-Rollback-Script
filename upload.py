@@ -37,9 +37,9 @@ def put_data(session, id, fname, all_content, command_type):
        Item={
             'ID': id,
             'host':hostname,
-           'title': fname,
+            'title': fname,
             'Command Type': command_type,
-            'output': all_content
+            'size in bytes': all_content
         }
     )
     # return response
@@ -61,20 +61,32 @@ def traversing_files(session):
         for fname in fileList:
             print('\t%s' % fname)
 
-            # with open(dirName+"/"+fname, "r") as fd:
-            #     print(fname)
             file_name = dirName + "/" + fname
-            print(file_name)
-            if '.gz' in fname:
+
+            if 'lsblk_-b.stdout' in fname:
                 with gzip.open(dirName + "/" + fname, 'r') as fin:
                     all_content = fin.readlines()
+                    for i in all_content:
+                        if 'disk' in i:
+                            size = i.split(' ')[9]
+                            put_data(session, id, fname, size, dirName)
+                            # command_details = fname.split(hostname)[1].replace('-', '').split(".")
+                            # command = command_details[0]
+                            # command_run_status = command_details[1]  # stderr/stdout
+                            print(size)
 
-                    command_details = fname.split(hostname)[1].replace('-', '').split(".")
-                    command = command_details[0]
-                    command_run_status = command_details[1]  # stderr/stdout
-                    print(command)
-                    put_data(session, id, fname, all_content, dirName)
-                    id = id+1
+
+            # print(file_name)
+            # if '.gz' in fname :
+            #     with gzip.open(dirName + "/" + fname, 'r') as fin:
+            #         all_content = fin.readlines()
+            #
+            #         command_details = fname.split(hostname)[1].replace('-', '').split(".")
+            #         command = command_details[0]
+            #         command_run_status = command_details[1]  # stderr/stdout
+            #         print(command)
+            #         put_data(session, id, fname, all_content, dirName)
+            #         id = id+1
             # write dump data logic here
             upload(session, file_name, bucket_name)
 
