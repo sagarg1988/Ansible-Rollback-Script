@@ -10,9 +10,13 @@ id= 0
 rootDir = 'collect/'
 
 def connect():
+    with open('../cred.txt') as reader:
+        key = reader.readline().split('key=')[1].replace('\n', '')
+        secret = reader.readline().split('secret=')[1].replace('\n', '')
+        # print(key, secret)
     session = boto3.Session(
-        aws_access_key_id='',
-        aws_secret_access_key='',
+        aws_access_key_id=key,
+        aws_secret_access_key=secret,
     )
     return session
 
