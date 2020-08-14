@@ -64,18 +64,19 @@ def traversing_files(session):
             # with open(dirName+"/"+fname, "r") as fd:
             #     print(fname)
             file_name = dirName + "/" + fname
+            print(file_name)
             # with gzip.open(dirName + "/" + fname, 'r') as fin:
-            with open(dirName + "/" + fname, 'r') as fin:
-                all_content = fin.readlines()
-
-                command_details = fname.split(hostname)[1].replace('-', '').split(".")
-                command = command_details[0]
-                command_run_status = command_details[1]  # stderr/stdout
-                print(command)
-                put_data(session, id, fname, all_content, dirName)
-                id = id+1
-            # write dump data logic here
-            upload(session, file_name, bucket_name)
+            # with open(dirName + "/" + fname, 'r') as fin:
+            #     all_content = fin.readlines()
+            #
+            #     command_details = fname.split(hostname)[1].replace('-', '').split(".")
+            #     command = command_details[0]
+            #     command_run_status = command_details[1]  # stderr/stdout
+            #     print(command)
+            #     put_data(session, id, fname, all_content, dirName)
+            #     id = id+1
+            # # write dump data logic here
+            # upload(session, file_name, bucket_name)
 
             # Put logic of copy here
 
