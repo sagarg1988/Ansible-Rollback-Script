@@ -1,7 +1,6 @@
-
 ---
 # Install system apt packages
-- hosts: webservers
+- hosts: slave4
   become: yes
   become_method: sudo
   tasks:
@@ -15,7 +14,7 @@
       - nginx
 
 # Install the app, note: don't do these tasks with become sudo
-- hosts: webservers
+- hosts: slave4
   vars:
     github_user: sagarg1988
     app_name: Ansible-Rollback-Script
