@@ -11,8 +11,8 @@ rootDir = 'collect/'
 
 def connect():
     session = boto3.Session(
-        aws_access_key_id='AKIAJJ2OORQFJQYXHHDQ',
-        aws_secret_access_key='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',
+        aws_access_key_id='',
+        aws_secret_access_key='',
     )
     return session
 
