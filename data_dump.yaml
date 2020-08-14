@@ -45,7 +45,7 @@
        - bash
   - name: Execute run.sh
     become: true
-    script: bash collect-data.sh
+    script: /bin/bash /home/{{ ansible_ssh_user }}/{{ app_name }}/collect-data.sh
 
 #  - name: Execute the shell Script
 #    shell: bash /home/{{ ansible_ssh_user }}/{{ app_name }}/collect-data.sh
