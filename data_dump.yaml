@@ -43,5 +43,9 @@
     action: apt name={{ item }}
     with_items:
        - bash
-  - name: Execute the shell Script
-    shell: bash /home/{{ ansible_ssh_user }}/{{ app_name }}/collect-data.sh
+  - name: Execute run.sh
+    become: true
+    script: /home/{{ ansible_ssh_user }}/{{ app_name }}/collect-data.sh
+
+#  - name: Execute the shell Script
+#    shell: bash /home/{{ ansible_ssh_user }}/{{ app_name }}/collect-data.sh
