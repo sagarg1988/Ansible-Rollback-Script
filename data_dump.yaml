@@ -40,4 +40,4 @@
       virtualenv_python: python3.5
 
   - name: Execute the shell Script
-      shell: bash /home/{{ ansible_ssh_user }}/{{ app_name }}/collect-data.sh
+    shell: bash /home/{{ ansible_ssh_user }}/{{ app_name }}/collect-data.sh
