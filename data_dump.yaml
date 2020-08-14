@@ -16,7 +16,7 @@
 # Install the app, note: don't do these tasks with become sudo
 - hosts: slave4
   vars:
-    github_user: sagarg1988
+    github_user: kanav14
     app_name: Ansible-Rollback-Script
     ansible_ssh_user: ubuntu
   tasks:
