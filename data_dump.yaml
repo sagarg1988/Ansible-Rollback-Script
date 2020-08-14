@@ -1,16 +1,16 @@
 ---
-## Install system apt packages
-#- hosts: slave4
-#  become: yes
-#  become_method: sudo
-#  tasks:
-#  - name: install packages
-#    apt: name={{item}} state=present
-#    with_items:
-#      - python-pip   # Optional
-#      - python-dev   # Optional
-#      - python3-pip
-#      - python3-dev
+# Install system apt packages
+- hosts: slave4
+  become: yes
+  become_method: sudo
+  tasks:
+  - name: install packages
+    apt: name={{item}} state=present
+    with_items:
+      - python-pip   # Optional
+      - python-dev   # Optional
+      - python3-pip
+      - python3-dev
 
 # Install the app, note: don't do these tasks with become sudo
 - hosts: slave4
