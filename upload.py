@@ -58,13 +58,14 @@ def traversing_files(session):
     id = 0 # get_last_record()
     for dirName, subdirList, fileList in os.walk(rootDir):
         print(dirName)
-        for fname in fileList:
-            print('\t%s' % fname)
-
-            # with open(dirName+"/"+fname, "r") as fd:
-            #     print(fname)
-            file_name = dirName + "/" + fname
-            print(file_name)
+        print(fileList)
+        # for fname in fileList:
+        #     print('\t%s' % fname)
+        #
+        #     # with open(dirName+"/"+fname, "r") as fd:
+        #     #     print(fname)
+        #     file_name = dirName + "/" + fname
+        #     print(file_name)
             # with gzip.open(dirName + "/" + fname, 'r') as fin:
             # with open(dirName + "/" + fname, 'r') as fin:
             #     all_content = fin.readlines()
