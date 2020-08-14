@@ -17,7 +17,7 @@
 - hosts: slave4
   vars:
     github_user: kanav14
-    app_name: Ansible-Rollback-Script
+    app_name: flask-ansible-example
     ansible_ssh_user: ubuntu
   tasks:
   - name: clone repo
