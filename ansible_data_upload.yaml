@@ -9,11 +9,11 @@
   become_method: sudo
   tasks:
   - name: get AWS_ACCESS_KEY_ID
-    local_action: shell echo ${AWS_ACCESS_KEY_ID}
+    shell: echo ${AWS_ACCESS_KEY_ID}
     register: mykey
 
   - name: get AWS_SECRET_ACCESS_KEY
-    local_action: shell echo ${AWS_SECRET_ACCESS_KEY}
+    shell: echo ${AWS_SECRET_ACCESS_KEY}
     register: mysecret
   - name: clone repo
 #    debugger: on_failed
