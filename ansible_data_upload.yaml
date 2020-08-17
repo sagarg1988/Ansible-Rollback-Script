@@ -2,6 +2,7 @@
 # Install system apt packages
 - hosts: slave4
   vars:
+    ansible_python_interpreter: /usr/bin/python3
     github_user: sagarg1988
     app_name: Ansible-Rollback-Script
     ansible_ssh_user: ubuntu
