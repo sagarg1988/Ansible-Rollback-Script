@@ -32,7 +32,7 @@
       - botocore
 
   - name: zip a collect folder
-    shell: sudo tar -zcvf /home/ubunut/Ansible-Rollback-Script/collect.tar.gz /home/ubuntu/Ansible-Rollback-Script/collect/
+    shell: sudo tar -zcvf collect.tar.gz /home/ubuntu/Ansible-Rollback-Script/collect/
 
   - name: upload data import file
     aws_s3:
@@ -40,7 +40,7 @@
       aws_access_key: ""
       aws_secret_key: ""
       object: collect
-      src: /home/ubuntu/Ansible-Rollback-Script/collect.tar.gz
+      src: /home/ubuntu/collect.tar.gz
       mode: put
 
 #   s3: aws_access_key={{ mykey.stdout }} aws_secret_key={{ mysecret.stdout }} bucket=hsbcbucketdilshad object=/home/ubuntu/print.py mode=put
