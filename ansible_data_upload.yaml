@@ -54,6 +54,8 @@
 
     aws_s3:
       bucket: hsbcbucketdilshad
+      aws_access_key: "{{ mykey.stdout }}"
+      aws_secret_key: "{{ mysecret.stdout }}"
       object: home/ubuntu/my_file.txt
       src: home/ubuntu/my_file.txt
       mode: put
