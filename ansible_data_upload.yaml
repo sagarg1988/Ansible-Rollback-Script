@@ -31,6 +31,12 @@
 #    become: yes
 #    become_user: root
 #
+  - name: Ensure boto and boto3 modules are installed
+    pip:
+      name: "{{ item }}"
+    with_items:
+      - boto3
+      - botocore
 #  - name: install modules in a virtualenv
 #    pip:
 #      requirements: /home/{{ ansible_ssh_user }}/{{ app_name }}/requirements.txt
