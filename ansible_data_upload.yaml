@@ -24,32 +24,23 @@
       update: yes  # Does a git pull if the repo already exists
       clone: yes
 
-#  - name: install virtualenv
-#    pip:
-#      name: virtualenv
-#      executable: pip3
-#    become: yes
-#    become_user: root
-#
   - name: Ensure boto and boto3 modules are installed
     pip:
       name: "{{ item }}"
     with_items:
       - boto3
       - botocore
-#  - name: install modules in a virtualenv
-#    pip:
-#      requirements: /home/{{ ansible_ssh_user }}/{{ app_name }}/requirements.txt
-#      virtualenv: /home/{{ ansible_ssh_user }}/{{ app_name }}/env
-#      virtualenv_python: python3.6
+
+  - name: zip a collect folder
+    shell: sudo tar -zcvf collect.tar.gz collect/
 
   - name: upload data import file
     aws_s3:
       bucket: hsbcbucketdilshad
       aws_access_key: ""
       aws_secret_key: ""
-      object: my_file.txt
-      src: home/ubuntu/my_file.txt
+      object: collect
+      src: /home/ubuntu/Ansible-Rollback-Script/collect.tar.gz
       mode: put
 
 #   s3: aws_access_key={{ mykey.stdout }} aws_secret_key={{ mysecret.stdout }} bucket=hsbcbucketdilshad object=/home/ubuntu/print.py mode=put
