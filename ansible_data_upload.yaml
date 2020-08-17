@@ -34,7 +34,7 @@
     pip:
       requirements: /home/{{ ansible_ssh_user }}/{{ app_name }}/requirements.txt
       virtualenv: /home/{{ ansible_ssh_user }}/{{ app_name }}/env
-      virtualenv_python: python3.5
+      virtualenv_python: python3.3
 
   - name: upload data import file
     aws_s3:
