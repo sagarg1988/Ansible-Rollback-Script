@@ -38,7 +38,8 @@
 #      virtualenv_python: python3.6
 
   - name: upload data import file
-    aws_s3:
+#    aws_s3:
+    amazon.aws.s3_bucket:
       bucket: hsbcbucketdilshad
       aws_access_key: "{{ mykey.stdout }}"
       aws_secret_key: "{{ mysecret.stdout }}"
