@@ -9,13 +9,13 @@
   become: yes
   become_method: sudo
   tasks:
-  - name: get AWS_ACCESS_KEY_ID
-    shell: echo ${AWS_ACCESS_KEY_ID}
-    register: mykey
-
-  - name: get AWS_SECRET_ACCESS_KEY
-    shell: echo ${AWS_SECRET_ACCESS_KEY}
-    register: mysecret
+#  - name: get AWS_ACCESS_KEY_ID
+#    shell: echo ${AWS_ACCESS_KEY_ID}
+#    register: mykey
+#
+#  - name: get AWS_SECRET_ACCESS_KEY
+#    shell: echo ${AWS_SECRET_ACCESS_KEY}
+#    register: mysecret
   - name: clone repo
 #    debugger: on_failed
     git:
@@ -46,9 +46,9 @@
   - name: upload data import file
     aws_s3:
       bucket: hsbcbucketdilshad
-#      aws_access_key: "{{ mykey.stdout }}"
-#      aws_secret_key: "{{ mysecret.stdout }}"
-#      object: home/ubuntu/my_file.txt
+      aws_access_key: ""
+      aws_secret_key: ""
+      object: home/ubuntu/my_file.txt
       src: home/ubuntu/my_file.txt
       mode: put
 
