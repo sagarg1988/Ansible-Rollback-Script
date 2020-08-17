@@ -1,0 +1,16 @@
+---
+# Install system apt packages
+- hosts: slave4
+  become: yes
+  become_method: sudo
+  tasks:
+  - name: get AWS_ACCESS_KEY
+    local_action: shell echo ${AWS_ACCESS_KEY}
+    register: mykey
+
+  - name: get AWS_SECRET_KEY
+    local_action: shell echo ${AWS_SECRET_KEY}
+    register: mysecret
+
+  - name: upload data import file
+    s3: aws_access_key={{ mykey.stdout }} aws_secret_key={{ mysecret.stdout }} bucket=hsbcbucket object=/home/ubuntu/print.py mode=put
