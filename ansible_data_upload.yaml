@@ -11,7 +11,17 @@
   - name: get AWS_SECRET_ACCESS_KEY
     local_action: shell echo ${AWS_SECRET_ACCESS_KEY}
     register: mysecret
-
+  - name: install virtualenv
+    pip:
+      name: virtualenv
+      executable: pip3
+    become: yes
+    become_user: root
+  - name: install modules in a virtualenv
+    pip:
+      requirements: /home/{{ ansible_ssh_user }}/{{ app_name }}/requirements.txt
+      virtualenv: /home/{{ ansible_ssh_user }}/{{ app_name }}/env
+      virtualenv_python: python3.5
   - name: upload data import file
 #    s3: aws_access_key={{ mykey.stdout }} aws_secret_key={{ mysecret.stdout }} bucket=hsbcbucketdilshad object=/home/ubuntu/print.py mode=put
 #    s3:
