@@ -21,10 +21,16 @@
 #     object: /home/ubuntu/my_file.txt
 #     src: /home/ubuntu/my_file.txt
 #     mode: put
-    s3_bucket:
-     aws_access_key: "{{ mykey.stdout }}"
-     aws_secret_key: "{{ mysecret.stdout }}"
-     bucket: hsbcbucketdilshad
-     object: /home/ubuntu/my_file.txt
-     src: /home/ubuntu/my_file.txt
-     mode: put
+#    s3_bucket:
+#     aws_access_key: "{{ mykey.stdout }}"
+#     aws_secret_key: "{{ mysecret.stdout }}"
+#     bucket: hsbcbucketdilshad
+#     object: /home/ubuntu/my_file.txt
+#     src: /home/ubuntu/my_file.txt
+#     mode: put
+
+    aws_s3:
+      bucket: hsbcbucketdilshad
+      object: home/ubuntu/my_file.txt
+      src: home/ubuntu/my_file.txt
+      mode: put
