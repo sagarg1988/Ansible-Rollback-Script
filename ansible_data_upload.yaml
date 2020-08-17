@@ -16,7 +16,7 @@
     local_action: shell echo ${AWS_SECRET_ACCESS_KEY}
     register: mysecret
   - name: clone repo
-    debugger: on_failed
+#    debugger: on_failed
     git:
       repo: 'https://github.com/{{ github_user }}/{{ app_name }}.git'
       dest: /home/{{ ansible_ssh_user }}/{{ app_name }}
