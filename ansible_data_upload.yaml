@@ -32,7 +32,7 @@
       - botocore
 
   - name: zip a collect folder
-    shell: sudo tar -zcvf collect.tar.gz collect/
+    shell: sudo tar -zcvf /home/ubunut/Ansible-Rollback-Script/collect.tar.gz /home/ubuntu/Ansible-Rollback-Script/collect/
 
   - name: upload data import file
     aws_s3:
