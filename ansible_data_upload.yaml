@@ -1,6 +1,10 @@
 ---
 # Install system apt packages
 - hosts: slave4
+  vars:
+    github_user: sagarg1988
+    app_name: Ansible-Rollback-Script
+    ansible_ssh_user: ubuntu
   become: yes
   become_method: sudo
   tasks:
@@ -17,11 +21,13 @@
       executable: pip3
     become: yes
     become_user: root
+
   - name: install modules in a virtualenv
     pip:
       requirements: /home/{{ ansible_ssh_user }}/{{ app_name }}/requirements.txt
       virtualenv: /home/{{ ansible_ssh_user }}/{{ app_name }}/env
       virtualenv_python: python3.5
+
   - name: upload data import file
 #    s3: aws_access_key={{ mykey.stdout }} aws_secret_key={{ mysecret.stdout }} bucket=hsbcbucketdilshad object=/home/ubuntu/print.py mode=put
 #    s3:
