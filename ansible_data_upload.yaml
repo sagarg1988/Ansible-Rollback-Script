@@ -14,7 +14,14 @@
 
   - name: upload data import file
 #    s3: aws_access_key={{ mykey.stdout }} aws_secret_key={{ mysecret.stdout }} bucket=hsbcbucketdilshad object=/home/ubuntu/print.py mode=put
-    s3:
+#    s3:
+#     aws_access_key: "{{ mykey.stdout }}"
+#     aws_secret_key: "{{ mysecret.stdout }}"
+#     bucket: hsbcbucketdilshad
+#     object: /home/ubuntu/my_file.txt
+#     src: /home/ubuntu/my_file.txt
+#     mode: put
+    s3_bucket:
      aws_access_key: "{{ mykey.stdout }}"
      aws_secret_key: "{{ mysecret.stdout }}"
      bucket: hsbcbucketdilshad
