@@ -29,9 +29,11 @@
   - name: Get Hostname of Node
     shell: hostname
     register: hostname_output.stdout
+  - debug: msg="{{ hostname_output }}"
+
 
   - name: zip a collect folder
-    shell: sudo tar -zcvf {{hostname_output}}.tar.gz /home/ubuntu/collect/
+    shell: sudo tar -zcvf "{{hostname_output}}".tar.gz /home/ubuntu/collect/
 #
 #  - name: upload data import file
 #    aws_s3:
