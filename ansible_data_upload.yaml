@@ -28,17 +28,17 @@
 
   - name: Get Hostname of Node
     shell: hostname
-    register: hostname_output.stdout
-  - debug: msg="{{ hostname_output }}"
+    register: hostname_output
+  - debug: msg="{{ hostname_output.stdout }}"
 
   - name: zip a collect folder
     shell: sudo tar -zcvf "{{hostname_output}}".tar.gz /home/ubuntu/collect/
 #
-#  - name: upload data import file
-#    aws_s3:
-#      bucket: hsbcbucketdilshad
-#      aws_access_key: ""
-#      aws_secret_key: ""
-#      object: collect
-#      src: /home/ubuntu/collect.tar.gz
-#      mode: put
+  - name: upload data import file
+    aws_s3:
+      bucket: hsbcbucketdilshad
+      aws_access_key: ""
+      aws_secret_key: ""
+      object: collect1
+      src: /home/ubuntu/collect.tar.gz
+      mode: put
