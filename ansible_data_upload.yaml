@@ -40,5 +40,5 @@
       aws_access_key: ""
       aws_secret_key: ""
       object: collect1
-      src: /home/ubuntu/collect.tar.gz
+      src: collect.tar.gz
       mode: put
