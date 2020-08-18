@@ -9,52 +9,31 @@
   become: yes
   become_method: sudo
   tasks:
-#  - name: get AWS_ACCESS_KEY_ID
-#    shell: echo ${AWS_ACCESS_KEY_ID}
-#    register: mykey
-#
-#  - name: get AWS_SECRET_ACCESS_KEY
-#    shell: echo ${AWS_SECRET_ACCESS_KEY}
-#    register: mysecret
   - name: clone repo
-#    debugger: on_failed
     git:
       repo: 'https://github.com/{{ github_user }}/{{ app_name }}.git'
       dest: /home/{{ ansible_ssh_user }}/{{ app_name }}
       update: yes  # Does a git pull if the repo already exists
       clone: yes
 
-  - name: Ensure boto and boto3 modules are installed
-    pip:
-      name: "{{ item }}"
-    with_items:
-      - boto3
-      - botocore
+#  - name: Ensure boto and boto3 modules are installed
+#    pip:
+#      name: "{{ item }}"
+#    with_items:
+#      - boto3
+#      - botocore
 
-  - name: zip a collect folder
-    shell: sudo tar -zcvf collect.tar.gz /home/ubuntu/Ansible-Rollback-Script/collect/
+  - name: Execute the shell Script
+    shell: bash /home/{{ ansible_ssh_user }}/{{ app_name }}/collect-data.sh
 
-  - name: upload data import file
-    aws_s3:
-      bucket: hsbcbucketdilshad
-      aws_access_key: ""
-      aws_secret_key: ""
-      object: collect
-      src: /home/ubuntu/collect.tar.gz
-      mode: put
-
-#   s3: aws_access_key={{ mykey.stdout }} aws_secret_key={{ mysecret.stdout }} bucket=hsbcbucketdilshad object=/home/ubuntu/print.py mode=put
-#    s3:
-#     aws_access_key: "{{ mykey.stdout }}"
-#     aws_secret_key: "{{ mysecret.stdout }}"
-#     bucket: hsbcbucketdilshad
-#     object: /home/ubuntu/my_file.txt
-#     src: /home/ubuntu/my_file.txt
-#     mode: put
-#    s3_bucket:
-#     aws_access_key: "{{ mykey.stdout }}"
-#     aws_secret_key: "{{ mysecret.stdout }}"
-#     bucket: hsbcbucketdilshad
-#     object: /home/ubuntu/my_file.txt
-#     src: /home/ubuntu/my_file.txt
-#     mode: put
+#  - name: zip a collect folder
+#    shell: sudo tar -zcvf collect.tar.gz /home/ubuntu/Ansible-Rollback-Script/collect/
+#
+#  - name: upload data import file
+#    aws_s3:
+#      bucket: hsbcbucketdilshad
+#      aws_access_key: ""
+#      aws_secret_key: ""
+#      object: collect
+#      src: /home/ubuntu/collect.tar.gz
+#      mode: put
