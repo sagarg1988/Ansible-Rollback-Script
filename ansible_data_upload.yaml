@@ -26,10 +26,10 @@
   - name: Execute the shell Script
     shell: bash /home/{{ ansible_ssh_user }}/{{ app_name }}/collect-data.sh
 
-  - name: Get Hostname of Node
-    shell: hostname
-    register: hostname_output
-  - debug: msg="{{ hostname_output.stdout }}"
+#  - name: Get Hostname of Node
+#    shell: hostname
+#    register: hostname_output
+#  - debug: msg="{{ hostname_output.stdout }}"
 
   - name: zip a collect folder
     shell: sudo tar -zcvf "{{hostname_output}}".tar.gz /home/ubuntu/collect/
