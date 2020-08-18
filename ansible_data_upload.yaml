@@ -16,18 +16,22 @@
       update: yes  # Does a git pull if the repo already exists
       clone: yes
 
-#  - name: Ensure boto and boto3 modules are installed
-#    pip:
-#      name: "{{ item }}"
-#    with_items:
-#      - boto3
-#      - botocore
+  - name: Ensure boto and boto3 modules are installed
+    pip:
+      name: "{{ item }}"
+    with_items:
+      - boto3
+      - botocore
 
   - name: Execute the shell Script
     shell: bash /home/{{ ansible_ssh_user }}/{{ app_name }}/collect-data.sh
 
+  - name: Get Hostname of Node
+    shell: hostname
+    register: hostname_output.stdout
+
   - name: zip a collect folder
-    shell: sudo tar -zcvf collect.tar.gz /home/ubuntu/collect/
+    shell: sudo tar -zcvf {{hostname_output}}.tar.gz /home/ubuntu/collect/
 #
 #  - name: upload data import file
 #    aws_s3:
