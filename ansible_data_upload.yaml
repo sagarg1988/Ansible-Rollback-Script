@@ -31,7 +31,6 @@
     register: hostname_output.stdout
   - debug: msg="{{ hostname_output }}"
 
-
   - name: zip a collect folder
     shell: sudo tar -zcvf "{{hostname_output}}".tar.gz /home/ubuntu/collect/
 #
