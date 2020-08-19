@@ -17,6 +17,5 @@
   - name:  Synchronization using rsync protocol on delegate host (push)
     synchronize:
       src: /home/ubuntu/Ansible-Rollback-Script/files/sagar.py
-#      dest: rsync://3.129.61.24/
-      dest: rsync://172-31-19-141/
+      dest: rsync://3.129.61.24/
 #    delegate_to: delegate.host
