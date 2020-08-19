@@ -1,6 +1,7 @@
 ---
 # Install system apt packages
 - hosts: slave4
+  user: ubuntu
   vars:
     ansible_python_interpreter: /usr/bin/python3
     github_user: sagarg1988
