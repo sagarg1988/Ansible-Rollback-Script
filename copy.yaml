@@ -11,6 +11,6 @@
   tasks:
   - name: copy files to remote location
     copy:
-      src: sagar.py
+      src: check.py
       remote_src: true
       dest: sagar_copy.py
