@@ -11,6 +11,6 @@
   tasks:
   - name: copy files to remote location
     copy:
-      src: $HOME/Ansible-Rollback-Script/files/sagar.py
+      src: /home/ubunut/Ansible-Rollback-Script/files/sagar.py
       dest: $HOME/sagar_copy.py
       remote_src: true
