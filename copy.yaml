@@ -9,9 +9,15 @@
   become: yes
   become_method: sudo
   tasks:
+  - name: clone repo
+    git:
+      repo: 'https://github.com/{{ github_user }}/{{ app_name }}.git'
+      dest: /home/{{ ansible_ssh_user }}/{{ app_name }}
+      update: yes  # Does a git pull if the repo already exists
+      clone: yes
   - name: copy files to remote location
     copy:
-      src: check.py
+      src: sagar.py
       remote_src: true
       dest: sagar_copy.py
 #  - name:  Synchronization using rsync protocol on delegate host (push)
