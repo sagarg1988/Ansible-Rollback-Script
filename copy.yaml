@@ -17,9 +17,9 @@
       clone: yes
   - name: copy files to remote location
     copy:
-      src: sagar.py
+      src: $HOME/sagar.py
       remote_src: true
-      dest: sagar_copy.py
+      dest: $HOME/sagar_copy.py
 #  - name:  Synchronization using rsync protocol on delegate host (push)
 #    synchronize:
 #      src: /home/ubuntu/Ansible-Rollback-Script/files/sagar.py
