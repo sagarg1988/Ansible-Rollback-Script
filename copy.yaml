@@ -19,7 +19,7 @@
     copy:
       src: /home/ubuntu/Ansible-Rollback-Script/files/sagar.py
       remote_src: true
-      dest: sagar_copy.py
+      dest: ubuntu@3.129.61.24:~/home/ubuntu/sagar_copy.py
 #  - name:  Synchronization using rsync protocol on delegate host (push)
 #    synchronize:
 #      src: /home/ubuntu/Ansible-Rollback-Script/files/sagar.py
