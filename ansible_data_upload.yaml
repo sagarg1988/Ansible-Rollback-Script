@@ -27,6 +27,6 @@
 #    shell: scp ip-172-31-19-141.tar.gz  ubuntu@3.129.61.24:/home/ubuntu/new_zip
 
   - name: fetch nginx access log
-  fetch:
-    src: /home/ubuntu/ip-172-31-19-141.tar.gz
-    dest: /home/ubuntu/new_zip/
+    fetch:
+      src: /home/ubuntu/ip-172-31-19-141.tar.gz
+      dest: /home/ubuntu/new_zip/
