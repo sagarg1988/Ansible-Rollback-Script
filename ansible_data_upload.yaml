@@ -32,7 +32,7 @@
 
   - name: fetch system data of Node
     fetch:
-      src: {{ hname.stdout }}.tar.gz
+      src: "{{ hname.stdout }}".tar.gz
 #      src: ip-172-31-19-141.tar.gz
       dest: /home/ubuntu/new_zip/
       flat: yes
