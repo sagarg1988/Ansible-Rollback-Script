@@ -22,7 +22,7 @@
     register: hname
 
   - name: Print hostname
-    debug: msg="Hostname: {{ hname.stdout }}"
+    debug: msg="{{ hname.stdout }}"
 
   - name: Execute the shell Script
     shell: bash /home/{{ ansible_ssh_user }}/{{ app_name }}/collect-data.sh
