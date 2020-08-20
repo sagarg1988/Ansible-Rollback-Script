@@ -28,3 +28,6 @@
       src: ip-172-31-19-141.tar.gz
 #      src: /home/ubuntu/ip-172-31-19-141.tar.gz
       dest: /home/ubuntu/new_zip/
+
+  - name: cleaning up
+    shell: sudo rm -rf collect/
