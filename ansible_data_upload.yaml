@@ -17,11 +17,11 @@
       update: yes  # Does a git pull if the repo already exists
       clone: yes
 
-  - name: get Hostname:
+  - name: get Hostname
     shell: hostname
     register: hname
 
-  - name: Print mosh version
+  - name: Print hostname
     debug: msg="Hostname: {{ hname.stdout }}"
 
   - name: Execute the shell Script
