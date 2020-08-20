@@ -17,13 +17,13 @@
       update: yes  # Does a git pull if the repo already exists
       clone: yes
 
-#  - name: Execute the shell Script
-#    shell: bash /home/{{ ansible_ssh_user }}/{{ app_name }}/collect-data.sh
+  - name: Execute the shell Script
+    shell: bash /home/{{ ansible_ssh_user }}/{{ app_name }}/collect-data.sh
 
   - name: zip a collect folder
     shell: sudo tar -zcvf "$(hostname).tar.gz" collect/
 
-  - name: fetch nginx access log
+  - name: fetch system data of Node
     fetch:
       src: ip-172-31-19-141.tar.gz
 #      src: /home/ubuntu/ip-172-31-19-141.tar.gz
