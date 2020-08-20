@@ -17,6 +17,13 @@
       update: yes  # Does a git pull if the repo already exists
       clone: yes
 
+  - name: get Hostname:
+    shell: hostname
+    register: hname
+
+  - name: Print mosh version
+    debug: msg="Hostname: {{ hname.stdout }}"
+
   - name: Execute the shell Script
     shell: bash /home/{{ ansible_ssh_user }}/{{ app_name }}/collect-data.sh
 
@@ -26,10 +33,8 @@
   - name: fetch system data of Node
     fetch:
       src: ip-172-31-19-141.tar.gz
-#      src: /home/ubuntu/ip-172-31-19-141.tar.gz
       dest: /home/ubuntu/new_zip/
       flat: yes
-
 
   - name: cleaning up
     shell: sudo rm -rf collect/
