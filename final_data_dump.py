@@ -16,8 +16,8 @@ def connect():
     #    secret = reader.readline().split('secret=')[1].replace('\n', '')
     #    print(key, secret)
     session = boto3.Session(
-        aws_access_key_id='AKIAIYHXALT6IOKUSPNQ',
-        aws_secret_access_key='qt7dqFv3GHFVhSzs4npRxjxhYlBqumpi7Ou4adJh',
+        aws_access_key_id='',
+        aws_secret_access_key='',
     )
     return session
 
