@@ -25,7 +25,8 @@
 
   - name: fetch system data of Node
     fetch:
-      src: ip-172-31-19-141.tar.gz
+      src: "$(hostname).tar.gz"
+#      src: ip-172-31-19-141.tar.gz
 #      src: /home/ubuntu/ip-172-31-19-141.tar.gz
       dest: /home/ubuntu/new_zip/
       flat: yes
