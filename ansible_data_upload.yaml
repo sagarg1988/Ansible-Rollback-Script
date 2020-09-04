@@ -31,7 +31,7 @@
     fetch:
       src: "{{ hname.stdout }}.tar.gz"
 #      src: ip-172-31-19-141.tar.gz
-      dest: "/home/{{}}ansible_ssh_user}}/new_zip/"
+      dest: "/home/{{ansible_ssh_user}}/new_zip/"
       flat: yes
 
   - name: cleaning up folders
