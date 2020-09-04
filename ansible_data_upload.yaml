@@ -1,12 +1,12 @@
 ---
 # The Playbook is for getting data from Node
 - hosts: slave4
-  user: ubuntu
+  user: hsbc
   vars:
     ansible_python_interpreter: /usr/bin/python3
     github_user: sagarg1988
     app_name: Ansible-Rollback-Script
-    ansible_ssh_user: ubuntu
+    ansible_ssh_user: hsbc
   become: yes
   become_method: sudo
   tasks:
@@ -31,7 +31,7 @@
     fetch:
       src: "{{ hname.stdout }}.tar.gz"
 #      src: ip-172-31-19-141.tar.gz
-      dest: /home/ubuntu/new_zip/
+      dest: "/home/{{}}ansible_ssh_user}}/new_zip/"
       flat: yes
 
   - name: cleaning up folders
