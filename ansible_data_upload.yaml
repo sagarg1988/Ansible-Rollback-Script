@@ -1,6 +1,6 @@
 ---
 # The Playbook is for getting data from Node
-- hosts: slave4
+- hosts: all
   user: ubuntu
   vars_files: var.yaml
 
