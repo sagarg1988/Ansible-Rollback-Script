@@ -1,7 +1,7 @@
 ---
 # The Playbook is for getting data from Node
 - hosts: slave4
-  user: hsbc
+  user: ubuntu
   vars_files: var.yaml
 
   become: yes
