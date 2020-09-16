@@ -8,8 +8,9 @@
   become_method: sudo
   tasks:
 
-#  - debug:
-#      msg: System {{ github_user }}  {{ app_name }} {{ ansible_ssh_user }}
+  - name: get Hostname
+    shell: hostname
+    register: hname
 
   - name: Execute the shell Script
     shell: bash /home/{{ ansible_ssh_user }}/{{ app_name }}/collect-data.sh
