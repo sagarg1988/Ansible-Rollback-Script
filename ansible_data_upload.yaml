@@ -2,27 +2,17 @@
 # The Playbook is for getting data from Node
 - hosts: slave4
   user: hsbc
-  vars:
-    ansible_python_interpreter: /usr/bin/python3
-    github_user: sagarg1988
-    app_name: Ansible-Rollback-Script
-    ansible_ssh_user: hsbc
+  vars_files: var.yaml
+
   become: yes
   become_method: sudo
   tasks:
-  - name: clone repo
-    git:
-      repo: 'https://github.com/{{ github_user }}/{{ app_name }}.git'
-      dest: /home/{{ ansible_ssh_user }}/{{ app_name }}
-      update: yes  # Does a git pull if the repo already exists
-      clone: yes
 
-  - name: get Hostname
-    shell: hostname
-    register: hname
+#  - debug:
+#      msg: System {{ github_user }}  {{ app_name }} {{ ansible_ssh_user }}
 
-#  - name: Execute the shell Script
-#    shell: bash /home/{{ ansible_ssh_user }}/{{ app_name }}/collect-data.sh
+  - name: Execute the shell Script
+    shell: bash /home/{{ ansible_ssh_user }}/{{ app_name }}/collect-data.sh
 
   - name: zip a collect folder
     shell: sudo tar -zcvf "$(hostname).tar.gz" collect/
