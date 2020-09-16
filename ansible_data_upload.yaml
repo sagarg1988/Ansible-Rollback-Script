@@ -19,8 +19,8 @@
     shell: hostname
     register: hname
 
-  - name: Execute the shell Script
-    shell: bash /home/{{ ansible_ssh_user }}/{{ app_name }}/collect-data.sh
+#  - name: Execute the shell Script
+#    shell: bash /home/{{ ansible_ssh_user }}/{{ app_name }}/collect-data.sh
 
   - name: zip a collect folder
     shell: sudo tar -zcvf "$(hostname).tar.gz" collect/
